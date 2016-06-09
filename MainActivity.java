@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 
 @SuppressLint("NewApi")
-public class MainActivity extends ActionBarActivity implements OnClickListener{
+public class MainActivity extends ActionBarActivity{
 
 	EditText etNo;
 	Button btnCall;
@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 //		btnCall.setOnClickListener(new MyListener());
 		
 		//第三种按钮点击时间 实现OnClickListener接口
-		btnCall.setOnClickListener(this);
+//		btnCall.setOnClickListener(this);
 			
 		}
 	
@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 		startActivity(intent);
 	}
 
-	@Override
+	//第四种点击事件
 	public void onClick(View v) {
 		call();
 		
