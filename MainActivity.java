@@ -23,22 +23,40 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		etNo = (EditText) findViewById(R.id.et_no);
 		btnCall = (Button) findViewById(R.id.btn_call);
-		btnCall.setOnClickListener(new OnClickListener() {
+		//第一种按钮点击事件 匿名内部类
+//		btnCall.setOnClickListener(new OnClickListener() {
+//			public void onClick(View v) {
+//				call();
+//			}
+//		});
+		
+
+		//第二种按钮点击时间 内部类
+		btnCall.setOnClickListener(new MyListener());
+		
+		//第三种按钮点击时间 实现OnClickListener接口
+//		btnCall.setOnClickListener(this);
 			
+		}
+	
+	private void call() {
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_CALL);
+		String number = etNo.getText().toString().trim();
+		if(number.equals("")){
+			Toast.makeText(MainActivity.this, "你輸入的號碼不能為空", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		intent.setData(Uri.parse("tel:"+number));
+		startActivity(intent);
+	}
+	
+	public class MyListener implements OnClickListener{
+		public void onClick(View v) {
+			call();
 			
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setAction(Intent.ACTION_CALL);
-				String number = etNo.getText().toString().trim();
-				if(number.equals("")){
-					Toast.makeText(MainActivity.this, "你輸入的號碼不能為空", Toast.LENGTH_SHORT).show();
-					return;
-				}
-				intent.setData(Uri.parse("tel:"+number));
-				startActivity(intent);
-				
-			}
-		});
+		}
+		
 	}
 }
 
